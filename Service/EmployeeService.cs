@@ -1,3 +1,4 @@
+using AutoMapper;
 using Contracts;
 using Service.Contracts;
 
@@ -7,8 +8,10 @@ public sealed class EmployeeService : IEmployeeService
 {
     private readonly IRepositoryManager _repository;
     public ILoggerManager Logger { get; }
-    public EmployeeService(IRepositoryManager repository, ILoggerManager logger)
+    private readonly IMapper _mapper;
+    public EmployeeService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
     {
+        _mapper = mapper;
         Logger = logger;
         _repository = repository;
     }
